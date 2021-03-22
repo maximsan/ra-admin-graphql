@@ -1,0 +1,113 @@
+{
+  "name": "template",
+  "version": "0.0.0-development",
+  "description": "template",
+  "main": "src/index.jsx",
+  "scripts": {
+    "client": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "test:watch": "npm run test --watchAll",
+    "test:ci": "set CI=true && npm run test",
+    "test:coverage": "npm run test --coverage",
+    "test:coverage:ci": "set CI=true && npm run test:coverage",
+    "lint": "eslint \"src/**/*.+(ts|tsx)\"",
+    "lint:fix": "eslint --fix \"src/**/*.+(ts|tsx)\"",
+    "tsc:check": "tsc --noEmit",
+    "clean": "rimraf node_modules build",
+    "server": "json-graphql-server src/db.ts --p 4000",
+    "start": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "eslintConfig": {
+    "plugins": [
+      "react",
+      "prettier"
+    ],
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "prettier",
+      "plugin:prettier/recommended"
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "warn",
+        {
+          "endOfLine": "auto"
+        }
+      ],
+      "react/state-in-constructor": 0,
+      "react/jsx-props-no-spreading": "off",
+      "import/prefer-default-export": "off",
+      "react/jsx-uses-react": "off",
+      "react/react-in-jsx-scope": "off",
+      "no-console": "off",
+      "no-use-before-define": 0,
+      "no-param-reassign": 1,
+      "curly": "warn",
+      "newline-before-return": "warn"
+    }
+  },
+  "eslintIgnore": [
+    "node_modules",
+    "build/*"
+  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!<rootDir>/src/index.tsx",
+      "!<rootDir>/src/reportWebVitals.ts",
+      "!<rootDir>/src/react-app-env.d.ts",
+      "!<rootDir>/src/config.ts",
+      "!<rootDir>/src/shared/**/*.{ts,tsx}",
+      "!<rootDir>/src/theme/**/*.{ts,tsx}"
+    ],
+    "testMatch": [
+      "**/src/**/*.test.+(ts|tsx)"
+    ]
+  },
+  "dependencies": {
+    "@material-ui/core": "4.11.3",
+    "@testing-library/jest-dom": "5.11.9",
+    "@testing-library/react": "11.2.5",
+    "@testing-library/user-event": "13.0.6",
+    "@types/dotenv-safe": "8.1.1",
+    "@types/jest": "26.0.21",
+    "@types/node": "14.14.35",
+    "@types/react": "17.0.3",
+    "@types/react-dom": "17.0.2",
+    "dotenv-safe": "8.2.0",
+    "graphql": "15.5.0",
+    "ra-data-graphql-simple": "3.13.2",
+    "react": "17.0.1",
+    "react-admin": "3.13.5",
+    "react-dom": "17.0.1",
+    "react-scripts": "4.0.3",
+    "typescript": "4.2.3",
+    "web-vitals": "1.1.1"
+  },
+  "devDependencies": {
+    "concurrently": "6.0.0",
+    "eslint": "7.22.0",
+    "eslint-config-prettier": "8.1.0",
+    "eslint-plugin-prettier": "3.3.1",
+    "husky": "4.3.8",
+    "json-graphql-server": "2.2.0",
+    "lint-staged": "10.5.4",
+    "prettier": "2.2.1",
+    "rimraf": "3.0.2"
+  },
+  "license": "MIT"
+}
